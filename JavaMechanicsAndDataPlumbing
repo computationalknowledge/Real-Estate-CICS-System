@@ -1,0 +1,50 @@
+package demo1;
+//https://docs.oracle.com/javase/tutorial/reflect/class/classNew.html 
+public class MainApplication {
+
+	public static void main(String[] args) {
+
+		// run instance methods on Orange
+		// WITHOUT using new !!
+		Orange  o = new Orange();
+		Orange.favoriteFlower = "Rose";
+		Object className = o.getClass();
+		System.out.println(Orange.Flavor);
+		System.out.println(className);
+		Object abc = o.getThis();
+		// abc.favoriteAnimal = "Dog";
+		System.out.println(o.SayHello());
+		System.out.println(abc);
+		Peach p1 = new Peach();
+		p1.run();
+		System.out.println("Peach " + Peach.a);
+		System.out.println(p1.toString());
+		
+	}
+}
+
+class Orange {
+	String favoriteAnimal;
+	static String favoriteFlower = "Rose";
+	public  Object getThis() {
+		return Orange.this;
+	}
+	public static String Flavor = "citrus";
+	public Orange a() {
+		return Orange.this;
+	}
+	public static String SayHello() {return "I am an " + Orange.class;}
+
+}
+
+class Peach {
+	static Object a;
+	
+	public void run() {
+		
+		// System.out.println(this);
+		a = Peach.this;
+		// System.out.println(a);		
+	}
+	public String toString() {return "I am a " + Peach.class;}	
+}
