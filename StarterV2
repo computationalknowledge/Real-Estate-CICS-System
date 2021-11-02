@@ -356,7 +356,23 @@ class RealEstateRecord {
 
 class ReportGenerator{
 	
+	private static ArrayList REDatabase = DataStorage.reRecords; 
+	private static RealEstateRecord realEstateRecord; 
 	public static void showReport() {
+		// algorithm:
+		// Step 1: Walk over the Array List 
+		
+		for (int i = 0; i < REDatabase.size(); i++) {
+			// Now output only the detached houses HouseType.eq("Detached")
+			// what is true right now? I have a handle on ONE RECORD in my ArrayList
+			realEstateRecord = (RealEstateRecord)REDatabase.get(i);
+			
+			if (realEstateRecord.HouseType.equals("Detached")) {
+				
+			}
+			
+		}
+		
 		
 		System.out.println("report generation complete");
 	}
