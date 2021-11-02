@@ -359,6 +359,8 @@ class ReportGenerator{
 	private static ArrayList REDatabase = DataStorage.reRecords; 
 	private static RealEstateRecord realEstateRecord; 
 	public static void showReport() {
+		double totalOfAllSellingPrices = 0;
+		int totalNumberOfHouses = 0; 
 		// algorithm:
 		// Step 1: Walk over the Array List 
 		
@@ -368,7 +370,10 @@ class ReportGenerator{
 			realEstateRecord = (RealEstateRecord)REDatabase.get(i);
 			
 			if (realEstateRecord.HouseType.equals("Detached")) {
-				
+				// now the requirement is:
+				// get the average selling price all all detached houses
+				totalNumberOfHouses++;
+				totalOfAllSellingPrices += realEstateRecord.SoldPrice;
 			}
 			
 		}
@@ -378,5 +383,8 @@ class ReportGenerator{
 	}
 	
 }
+
+
+
 
 
