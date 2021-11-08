@@ -24,6 +24,8 @@ public class MainApplication {
 		System.out.println("Community " + community);
 		System.out.println("Report Type: " + kindOfReport);
 		System.out.println("Average Selling Price: " + ReportGenerator.AverageSellingPrice);
+		// how to report on the total number of houses... ?
+		System.out.println("Number of houses covered in this REPORT: " + ReportGenerator.totalNumberOfHouses);
 	}
 
 }
@@ -362,16 +364,26 @@ class ReportGenerator {
 	public static double AverageSellingPrice;
 	private static ArrayList REDatabase = DataStorage.reRecords;
 	private static RealEstateRecord realEstateRecord;
-
+	public static int totalNumberOfHouses = 0;
 	public static void showReport() {
 		double totalOfAllSellingPrices = 0;
-		int totalNumberOfHouses = 0;
+		
 		// algorithm:
 		// Step 1: Walk over the Array List
 
 		for (int i = 0; i < REDatabase.size(); i++) {
 			// Now output only the detached houses HouseType.eq("Detached")
 			// what is true right now? I have a handle on ONE RECORD in my ArrayList
+			
+			// here we are walking over the data stor: REDatabase
+			// using a FOR LOOP: for each element of the ArrayList that we traverse
+			// over, we use the get(index number) method of the ArrayList Class (JDK)
+			// get pull out that OBJECT : which is just a MEMORY Location:
+			// Problem: when I demarshall an OBJECT from a Data Structure: all we have
+			// is a memory location: the JRE environment does not have the knowledge 
+			// of WHAT class that this object was make from!
+			
+			// realEstateRecord = (RealEstateRecord) REDatabase.get(i);
 			realEstateRecord = (RealEstateRecord) REDatabase.get(i);
 
 			if (realEstateRecord.HouseType.equals("Detached")) {
